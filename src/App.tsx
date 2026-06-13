@@ -11,6 +11,7 @@ import { renderResumeMarkdown } from './resumeEngine';
 import { sampleMarkdown } from './sampleResume';
 
 type TemplateId = 'harvard' | 'jake' | 'mckinsey' | 'wallstreet' | 'academic';
+
 type SaveStatus = 'Saved locally' | 'Saving…';
 
 type ResumeTemplate = {
@@ -18,6 +19,11 @@ type ResumeTemplate = {
   name: string;
   shortName: string;
   description: string;
+};
+
+type TrustPoint = {
+  label: string;
+  copy: string;
 };
 
 type PanState = {
@@ -67,6 +73,25 @@ const templates: ResumeTemplate[] = [
     name: 'Academic CV',
     shortName: 'Academic',
     description: 'Serif-led format for education, research, publications, and teaching.',
+  },
+];
+
+const trustPoints: TrustPoint[] = [
+  {
+    label: 'Local editing',
+    copy: 'Resume text is kept in this browser through local storage.',
+  },
+  {
+    label: 'No account wall',
+    copy: 'No login, subscription, upload flow, or checkout gate.',
+  },
+  {
+    label: 'Native export',
+    copy: 'PDFs are created through your browser print dialog.',
+  },
+  {
+    label: 'No AI pipeline',
+    copy: 'No AI API reads, rewrites, or stores your resume.',
   },
 ];
 
@@ -281,7 +306,6 @@ function App() {
 
     frame.scrollLeft = panState.scrollLeft - deltaX;
     frame.scrollTop = panState.scrollTop - deltaY;
-
     pageScroller.scrollLeft = panState.pageScrollLeft - deltaX;
     pageScroller.scrollTop = panState.pageScrollTop - deltaY;
   };
@@ -303,7 +327,6 @@ function App() {
 
     frame.scrollLeft += horizontalDelta;
     frame.scrollTop += verticalDelta;
-
     pageScroller.scrollLeft += horizontalDelta;
     pageScroller.scrollTop += verticalDelta;
 
@@ -323,10 +346,12 @@ function App() {
         <div className="brand-mark" aria-hidden="true">
           T
         </div>
+
         <div className="brand-copy">
           <p className="eyebrow">Typeface Resume</p>
           <h1>Markdown to ATS-ready resume</h1>
         </div>
+
         <div className="topbar-status">
           <span className="status-dot" aria-hidden="true" />
           Client-side only
@@ -340,6 +365,7 @@ function App() {
               <p className="eyebrow">Input</p>
               <h2>Markdown editor</h2>
             </div>
+
             <span className={`autosave-pill ${saveStatus === 'Saving…' ? 'is-saving' : ''}`}>
               {saveStatus}
             </span>
@@ -359,6 +385,7 @@ function App() {
                 <strong>## Experience</strong>.
               </div>
             ) : null}
+
             <textarea
               className="markdown-editor"
               value={markdown}
@@ -383,6 +410,7 @@ function App() {
               <p className="eyebrow">Live Preview</p>
               <h2>{selectedTemplateDetails.name}</h2>
             </div>
+
             <button
               className="secondary-button"
               type="button"
@@ -443,7 +471,8 @@ function App() {
             <p className="eyebrow">Export</p>
             <h3>Browser-native PDF</h3>
             <p>
-              Opens your browser print dialog. Choose “Save as PDF”. Only the resume sheet prints.
+              Opens your browser print dialog. Choose “Save as PDF”. Only the resume sheet
+              prints.
             </p>
             <button className="primary-button" type="button" onClick={handlePrint}>
               Print / Save PDF
@@ -455,6 +484,7 @@ function App() {
             <button className="secondary-button" type="button" onClick={handleCopyMarkdown}>
               {copyLabel}
             </button>
+
             <button
               className={`ghost-button ${resetConfirming ? 'is-warning' : ''}`}
               type="button"
@@ -464,11 +494,32 @@ function App() {
             </button>
           </div>
 
+          <div className="trust-card">
+            <p className="eyebrow">Trust</p>
+            <h3>Private by default</h3>
+            <ul className="trust-list">
+              {trustPoints.map((point) => (
+                <li key={point.label}>
+                  <strong>{point.label}</strong>
+                  <span>{point.copy}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="ad-card" role="complementary" aria-label="Sponsored placeholder">
+            <p className="eyebrow">Sponsored</p>
+            <div className="ad-card-body">
+              <span>Native ad placeholder</span>
+              <p>Reserved for one clean static sponsor placement. No ad script is loaded yet.</p>
+            </div>
+          </div>
+
           <div className="privacy-card">
             <p className="eyebrow">Privacy</p>
             <p>
-              No login, uploads, database, server PDF generation, or AI API calls. Your resume text
-              stays in this browser.
+              No login, uploads, database, server PDF generation, or AI API calls. Your resume
+              text stays in this browser.
             </p>
           </div>
 

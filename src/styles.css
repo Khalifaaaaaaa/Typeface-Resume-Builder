@@ -1,7 +1,6 @@
 :root {
   color-scheme: light;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --app-bg: #eef1f5;
@@ -12,6 +11,7 @@
   --soft-muted: #94a3b8;
   --accent: #111827;
   --accent-2: #2563eb;
+  --success: #10b981;
   --ring: rgba(37, 99, 235, 0.2);
   --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.07);
   --shadow-md: 0 16px 40px rgba(15, 23, 42, 0.12);
@@ -54,6 +54,14 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+noscript {
+  display: block;
+  padding: 1rem;
+  color: #111827;
+  background: #fef3c7;
+  font-weight: 700;
+}
+
 .app-shell {
   display: flex;
   min-height: 100vh;
@@ -70,6 +78,7 @@ textarea:focus-visible {
   padding: 0.85rem 1.35rem;
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   background: rgba(248, 250, 252, 0.96);
+  backdrop-filter: blur(18px);
 }
 
 .brand-mark {
@@ -129,7 +138,7 @@ textarea:focus-visible {
   width: 0.55rem;
   height: 0.55rem;
   border-radius: 999px;
-  background: #10b981;
+  background: var(--success);
   box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.14);
 }
 
@@ -157,6 +166,11 @@ textarea:focus-visible {
   box-shadow: var(--shadow-sm);
 }
 
+.controls-pane {
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
 .pane-header,
 .preview-toolbar {
   display: flex;
@@ -177,10 +191,7 @@ textarea:focus-visible {
   font-size: 0.72rem;
   font-weight: 800;
   white-space: nowrap;
-  transition:
-    border-color 140ms ease,
-    color 140ms ease,
-    background 140ms ease;
+  transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
 }
 
 .autosave-pill.is-saving {
@@ -202,8 +213,7 @@ textarea:focus-visible {
   padding: 0.34rem 0.52rem;
   color: #475569;
   background: rgba(255, 255, 255, 0.72);
-  font-family:
-    "SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace;
   font-size: 0.68rem;
   font-weight: 700;
 }
@@ -243,14 +253,10 @@ textarea:focus-visible {
   color: #111827;
   background: rgba(248, 250, 252, 0.96);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
-  font-family:
-    "SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace;
   font-size: 0.88rem;
   line-height: 1.65;
-  transition:
-    border-color 140ms ease,
-    box-shadow 140ms ease,
-    background 140ms ease;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 
 .markdown-editor:focus {
@@ -329,9 +335,7 @@ textarea:focus-visible {
   font-size: 10.8pt;
   line-height: 1.34;
   cursor: inherit;
-  transition:
-    box-shadow 140ms ease,
-    opacity 140ms ease;
+  transition: box-shadow 140ms ease, opacity 140ms ease;
 }
 
 .resume-sheet * {
@@ -520,16 +524,14 @@ textarea:focus-visible {
   text-align: left;
   color: var(--ink);
   background: rgba(248, 250, 252, 0.76);
-  transition:
-    border-color 140ms ease,
-    background 140ms ease,
-    box-shadow 140ms ease;
+  transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease, transform 140ms ease;
 }
 
 .template-button:hover {
   border-color: rgba(37, 99, 235, 0.22);
   background: #ffffff;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
+  transform: translateY(-1px);
 }
 
 .template-button.is-active {
@@ -598,8 +600,10 @@ textarea:focus-visible {
 }
 
 .control-card,
+.trust-card,
 .privacy-card,
-.usage-card {
+.usage-card,
+.ad-card {
   margin: 1rem;
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: var(--radius-md);
@@ -611,15 +615,18 @@ textarea:focus-visible {
   margin-top: 1.1rem;
 }
 
-.control-card h3 {
+.control-card h3,
+.trust-card h3 {
   margin: 0;
   font-size: 1rem;
   letter-spacing: -0.03em;
 }
 
 .control-card p,
+.trust-card p,
 .privacy-card p,
-.usage-card p {
+.usage-card p,
+.ad-card p {
   color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.55;
@@ -642,11 +649,7 @@ textarea:focus-visible {
   padding: 0.72rem 1rem;
   font-size: 0.84rem;
   font-weight: 850;
-  transition:
-    border-color 140ms ease,
-    background 140ms ease,
-    box-shadow 140ms ease,
-    color 140ms ease;
+  transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease, color 140ms ease, transform 140ms ease;
 }
 
 .primary-button {
@@ -677,6 +680,7 @@ textarea:focus-visible {
 
 .primary-button:hover {
   box-shadow: 0 14px 28px rgba(15, 23, 42, 0.2);
+  transform: translateY(-1px);
 }
 
 .secondary-button:hover,
@@ -689,6 +693,77 @@ textarea:focus-visible {
   grid-template-columns: 1fr;
   gap: 0.55rem;
   padding: 0 1rem;
+}
+
+.trust-card {
+  background:
+    linear-gradient(180deg, rgba(248, 250, 252, 0.82), rgba(255, 255, 255, 0.72)),
+    #ffffff;
+}
+
+.trust-list {
+  display: grid;
+  gap: 0.72rem;
+  margin: 0.82rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trust-list li {
+  display: grid;
+  gap: 0.12rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid rgba(17, 24, 39, 0.18);
+}
+
+.trust-list strong {
+  color: #111827;
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.trust-list span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.ad-card {
+  border-style: dashed;
+  border-color: rgba(15, 23, 42, 0.16);
+  background:
+    linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(255, 255, 255, 0.72)),
+    #ffffff;
+}
+
+.ad-card-body {
+  display: grid;
+  min-height: 7.5rem;
+  place-items: center;
+  align-content: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  border-radius: calc(var(--radius-md) - 0.35rem);
+  padding: 1rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, rgba(15, 23, 42, 0.045), transparent 9rem),
+    rgba(248, 250, 252, 0.72);
+}
+
+.ad-card-body span {
+  color: #111827;
+  font-size: 0.85rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+
+.ad-card-body p {
+  max-width: 14rem;
+  margin: 0;
+  color: var(--soft-muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
 }
 
 .privacy-card {
@@ -709,7 +784,6 @@ textarea:focus-visible {
 /* Phase 3 Template Fidelity */
 
 /* 1. Harvard Executive */
-
 .theme-harvard {
   padding: 0.62in 0.68in;
   font-family: "Times New Roman", Times, serif;
@@ -762,12 +836,12 @@ textarea:focus-visible {
   font-weight: 800;
 }
 
-.theme-harvard .resume-entry-meta {
+.theme-harvard .resume-entry-meta,
+.theme-harvard .resume-entry-date {
   font-size: 9.85pt;
 }
 
 .theme-harvard .resume-entry-date {
-  font-size: 9.85pt;
   font-weight: 800;
 }
 
@@ -789,7 +863,6 @@ textarea:focus-visible {
 }
 
 /* 2. Jake's Layout / Tech Standard */
-
 .theme-jake {
   padding: 0.46in 0.55in;
   font-family: Arial, Helvetica, sans-serif;
@@ -881,7 +954,6 @@ textarea:focus-visible {
 }
 
 /* 3. McKinsey Functional */
-
 .theme-mckinsey {
   padding: 0.64in 0.72in;
   font-family: Georgia, "Times New Roman", serif;
@@ -944,13 +1016,12 @@ textarea:focus-visible {
   font-weight: 900;
 }
 
-.theme-mckinsey .resume-entry-meta {
-  margin-top: 0.006in;
+.theme-mckinsey .resume-entry-meta,
+.theme-mckinsey .resume-entry-date {
   font-size: 9.9pt;
 }
 
 .theme-mckinsey .resume-entry-date {
-  font-size: 9.9pt;
   font-weight: 700;
 }
 
@@ -972,7 +1043,6 @@ textarea:focus-visible {
 }
 
 /* 4. Wall Street Investment Banking */
-
 .theme-wallstreet {
   padding: 0.38in 0.45in;
   font-family: Arial, Helvetica, sans-serif;
@@ -1081,12 +1151,12 @@ textarea:focus-visible {
 }
 
 /* 5. Academic CV */
-
 .theme-academic {
-  padding: 0.7in 0.74in;
+  min-height: 11in;
+  padding: 0.72in 0.78in;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 10.55pt;
-  line-height: 1.43;
+  font-size: 10.35pt;
+  line-height: 1.42;
 }
 
 .theme-academic .resume-header {
@@ -1096,7 +1166,7 @@ textarea:focus-visible {
 
 .theme-academic .resume-name {
   margin-bottom: 0.055in;
-  font-size: 19.4pt;
+  font-size: 20pt;
   font-weight: 700;
   letter-spacing: 0;
   text-align: left;
@@ -1105,136 +1175,109 @@ textarea:focus-visible {
 
 .theme-academic .resume-contact-line {
   justify-content: flex-start;
-  font-size: 9.5pt;
-  line-height: 1.3;
+  font-size: 9.35pt;
 }
 
 .theme-academic .resume-section {
   margin-top: 0.2in;
+  break-inside: auto;
 }
 
 .theme-academic .resume-section-title {
-  margin-bottom: 0.08in;
+  margin-bottom: 0.085in;
   border-bottom: 1px solid #111111;
-  padding-bottom: 0.028in;
-  font-size: 11.15pt;
-  font-weight: 700;
-  letter-spacing: 0.015em;
-  text-transform: none;
+  padding-bottom: 0.03in;
+  font-size: 11.1pt;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
 }
 
 .theme-academic .resume-entry {
   margin-top: 0.1in;
+  break-inside: avoid;
 }
 
 .theme-academic .resume-entry-header {
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-  margin-bottom: 0.03in;
+  column-gap: 0.18in;
+  margin-bottom: 0.035in;
 }
 
 .theme-academic .resume-entry-title {
-  font-size: 10.55pt;
-  font-weight: 700;
+  font-size: 10.5pt;
+  font-weight: 800;
 }
 
-.theme-academic .resume-entry-meta {
-  margin-top: 0.012in;
-  font-size: 10.15pt;
+.theme-academic .resume-entry-meta,
+.theme-academic .resume-entry-date {
+  font-size: 9.9pt;
 }
 
 .theme-academic .resume-entry-date {
-  margin-top: 0.008in;
-  text-align: left;
-  color: #333333;
-  font-size: 9.95pt;
   font-weight: 600;
 }
 
 .theme-academic .resume-paragraph {
-  margin-bottom: 0.078in;
+  margin-bottom: 0.075in;
 }
 
 .theme-academic .resume-list {
-  margin: 0.02in 0 0.095in 0.19in;
-  padding-left: 0.13in;
+  margin-bottom: 0.095in;
 }
 
 .theme-academic .resume-list li {
-  margin-bottom: 0.04in;
+  margin-bottom: 0.045in;
 }
 
-.theme-academic .resume-section-publications .resume-list,
-.theme-academic .resume-section-awards .resume-list {
-  list-style-position: outside;
+.theme-academic .resume-numbered-list {
+  margin-left: 0.22in;
 }
 
-.theme-academic .resume-section-publications .resume-list li,
-.theme-academic .resume-section-awards .resume-list li {
-  margin-bottom: 0.06in;
-}
-
-.theme-academic .resume-skill-line {
-  margin-bottom: 0.04in;
-}
-
-@media (max-width: 1320px) {
+@media (max-width: 1280px) {
   .workspace {
-    grid-template-columns: minmax(290px, 0.84fr) minmax(540px, 1.16fr);
+    grid-template-columns: minmax(300px, 0.72fr) minmax(560px, 1.45fr) minmax(280px, 0.58fr);
+  }
+}
+
+@media (max-width: 1080px) {
+  .topbar {
+    position: static;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .pane,
+  .preview-pane {
+    min-height: auto;
+  }
+
+  .editor-pane {
+    min-height: 28rem;
   }
 
   .controls-pane {
-    grid-column: 1 / -1;
+    overflow: visible;
   }
 
   .template-list {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  .control-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .privacy-card {
     margin-top: 1rem;
   }
-}
-
-@media (max-width: 980px) {
-  .topbar {
-    align-items: flex-start;
-  }
-
-  .topbar-status {
-    display: none;
-  }
-
-  .workspace {
-    grid-template-columns: minmax(0, 1fr);
-    padding: 0.75rem;
-  }
-
-  .editor-pane {
-    min-height: 32rem;
-  }
-
-  .template-list {
-    grid-template-columns: minmax(0, 1fr);
-  }
 
   .paper-frame {
-    justify-items: start;
-  }
-
-  .resume-sheet {
-    width: 8.5in;
+    min-height: 72vh;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 720px) {
   .topbar {
-    position: static;
-    padding: 0.85rem;
+    align-items: flex-start;
+    padding: 0.8rem;
   }
 
   .brand-mark {
@@ -1242,8 +1285,13 @@ textarea:focus-visible {
     height: 2.35rem;
   }
 
+  .topbar-status {
+    display: none;
+  }
+
   .workspace {
-    gap: 0.75rem;
+    gap: 0.8rem;
+    padding: 0.8rem;
   }
 
   .pane,
@@ -1253,34 +1301,44 @@ textarea:focus-visible {
 
   .pane-header,
   .preview-toolbar {
-    flex-direction: column;
     padding: 0.9rem;
+  }
+
+  .preview-toolbar {
+    flex-direction: column;
   }
 
   .preview-toolbar .secondary-button {
     width: 100%;
   }
 
-  .editor-hint {
-    padding: 0 0.9rem 0.75rem;
+  .template-list {
+    grid-template-columns: 1fr;
+    padding: 0 0.9rem;
   }
 
-  .markdown-editor {
-    width: calc(100% - 1.8rem);
-    margin: 0 0.9rem;
+  .control-card,
+  .trust-card,
+  .privacy-card,
+  .usage-card,
+  .ad-card {
+    margin: 0.9rem;
   }
 
-  .empty-editor-helper {
-    left: 1.8rem;
-    right: 1.8rem;
+  .control-actions {
+    padding: 0 0.9rem;
   }
 
   .paper-frame {
-    padding: 0.35rem 0.9rem 1rem;
+    justify-items: start;
+    min-height: 68vh;
+    padding: 0.25rem 0.8rem 1rem;
   }
 
-  .resume-contact-line {
-    justify-content: center;
+  .resume-sheet {
+    width: 8.5in;
+    max-width: none;
+    transform-origin: top left;
   }
 }
 
@@ -1295,19 +1353,17 @@ textarea:focus-visible {
   }
 }
 
-@media print {
-  @page {
-    size: Letter;
-    margin: 0;
-  }
+@page {
+  size: Letter;
+  margin: 0;
+}
 
+@media print {
   html,
-  body,
-  #root {
-    width: 100%;
-    min-height: auto;
+  body {
+    width: 8.5in;
+    min-height: 11in;
     margin: 0 !important;
-    padding: 0 !important;
     background: #ffffff !important;
   }
 
@@ -1316,85 +1372,55 @@ textarea:focus-visible {
     print-color-adjust: exact;
   }
 
-  body * {
-    visibility: hidden !important;
-  }
-
-  #resume-preview,
-  #resume-preview * {
-    visibility: visible !important;
-  }
-
   .no-print,
   .topbar,
   .editor-pane,
   .controls-pane,
-  .preview-toolbar {
+  .preview-toolbar,
+  .ad-card {
     display: none !important;
   }
 
+  #root,
   .app-shell,
   .workspace,
   .preview-pane,
   .paper-frame {
     display: block !important;
-    width: auto !important;
+    width: 100% !important;
     min-width: 0 !important;
-    max-width: none !important;
-    min-height: auto !important;
+    min-height: 0 !important;
     height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: visible !important;
     border: 0 !important;
     border-radius: 0 !important;
     background: #ffffff !important;
     box-shadow: none !important;
+    overflow: visible !important;
     contain: none !important;
-    cursor: auto !important;
   }
 
   .resume-sheet {
-    position: static !important;
-    display: block !important;
     width: 8.5in !important;
-    min-width: 0 !important;
-    max-width: none !important;
     min-height: 11in !important;
-    height: auto !important;
     margin: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
     box-shadow: none !important;
-    transform: none !important;
     cursor: auto !important;
+    page-break-after: auto;
   }
 
-  .resume-header,
-  .resume-section,
-  .resume-entry {
+  .resume-entry,
+  .resume-list li {
     break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  .theme-academic .resume-section,
-  .theme-academic .resume-entry {
-    break-inside: auto;
-    page-break-inside: auto;
   }
 
   .resume-section-title {
     break-after: avoid;
-    page-break-after: avoid;
   }
 
-  .resume-list li {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  .resume-sheet a {
-    color: #111111 !important;
+  a {
+    color: inherit !important;
     text-decoration: none !important;
   }
 }

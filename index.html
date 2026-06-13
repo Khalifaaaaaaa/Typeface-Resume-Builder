@@ -3,14 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#111827" />
+
+    <title>Typeface Resume — Privacy-First Markdown Resume Builder</title>
     <meta
       name="description"
-      content="Typeface Resume is a privacy-first Markdown resume builder with live ATS-friendly preview and browser PDF export."
+      content="Build an ATS-friendly resume from Markdown with five professional resume standards, live preview, local-only editing, and browser-native PDF export."
     />
-    <title>Typeface Resume Builder</title>
+    <meta
+      name="keywords"
+      content="resume builder, markdown resume, ATS resume, Harvard resume, Jake resume, tech resume, consulting resume, investment banking resume, academic CV, PDF resume"
+    />
+    <meta name="author" content="Typeface Resume" />
+    <meta name="robots" content="index, follow" />
+    <meta name="application-name" content="Typeface Resume" />
+    <meta name="apple-mobile-web-app-title" content="Typeface Resume" />
+    <meta name="theme-color" content="#111827" />
+    <meta name="color-scheme" content="light" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Typeface Resume" />
+    <meta property="og:title" content="Typeface Resume — Markdown to ATS-Ready PDF" />
+    <meta
+      property="og:description"
+      content="A privacy-first resume builder that turns Markdown into clean, ATS-friendly resumes with five professional standards and browser-native PDF export."
+    />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Typeface Resume — Markdown to ATS-Ready PDF" />
+    <meta
+      name="twitter:description"
+      content="Create clean, professional resumes from Markdown. No login, no uploads, no subscriptions, and no server-side PDF generation."
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Typeface Resume",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any modern browser",
+        "description": "A privacy-first Markdown resume builder with live ATS-friendly preview, five professional resume standards, and browser-native PDF export.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      Typeface Resume needs JavaScript to render the live Markdown resume preview. Your resume content still remains in your browser.
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
