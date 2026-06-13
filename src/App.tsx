@@ -95,6 +95,20 @@ const trustPoints: TrustPoint[] = [
   },
 ];
 
+function PrintIcon() {
+  return (
+    <svg
+      className="print-button-icon"
+      viewBox="0 0 20 20"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M6.25 3.25A1.25 1.25 0 0 1 7.5 2h5A1.25 1.25 0 0 1 13.75 3.25V5h-7.5V3.25Z" />
+      <path d="M5.5 6.25h9A2.5 2.5 0 0 1 17 8.75v3A1.25 1.25 0 0 1 15.75 13H14v2.75A1.25 1.25 0 0 1 12.75 17h-5.5A1.25 1.25 0 0 1 6 15.75V13H4.25A1.25 1.25 0 0 1 3 11.75v-3a2.5 2.5 0 0 1 2.5-2.5Zm2 5.75v3.5h5V12h-5Zm7-3.25a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z" />
+    </svg>
+  );
+}
+
 function isTemplateId(value: string | null): value is TemplateId {
   return templates.some((template) => template.id === value);
 }
@@ -348,7 +362,7 @@ function App() {
         </div>
 
         <div className="brand-copy">
-          <p className="eyebrow">Typeface Resume</p>
+          <p className="eyebrow">Typeface Resume Builder</p>
           <h1>Markdown to ATS-ready resume</h1>
         </div>
 
@@ -412,12 +426,13 @@ function App() {
             </div>
 
             <button
-              className="secondary-button"
+              className="secondary-button print-button toolbar-print-button"
               type="button"
               onClick={handlePrint}
               title="Print or save as PDF. Shortcut: Ctrl/Cmd + Enter in the editor."
             >
-              Print / Save PDF
+              <PrintIcon />
+              <span>Print / Save PDF</span>
             </button>
           </div>
 
@@ -474,8 +489,9 @@ function App() {
               Opens your browser print dialog. Choose “Save as PDF”. Only the resume sheet
               prints.
             </p>
-            <button className="primary-button" type="button" onClick={handlePrint}>
-              Print / Save PDF
+            <button className="primary-button print-button export-print-button" type="button" onClick={handlePrint}>
+              <PrintIcon />
+              <span>Print / Save PDF</span>
             </button>
             <p className="microcopy">Shortcut: Ctrl/Cmd + Enter while editing.</p>
           </div>
@@ -494,6 +510,14 @@ function App() {
             </button>
           </div>
 
+          <div className="ad-card" role="complementary" aria-label="Sponsored placeholder">
+            <p className="eyebrow">Sponsored</p>
+            <div className="ad-card-body">
+              <span>Native ad placeholder</span>
+              <p>Reserved for one clean static sponsor placement. No ad script is loaded yet.</p>
+            </div>
+          </div>
+
           <div className="trust-card">
             <p className="eyebrow">Trust</p>
             <h3>Private by default</h3>
@@ -505,14 +529,6 @@ function App() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div className="ad-card" role="complementary" aria-label="Sponsored placeholder">
-            <p className="eyebrow">Sponsored</p>
-            <div className="ad-card-body">
-              <span>Native ad placeholder</span>
-              <p>Reserved for one clean static sponsor placement. No ad script is loaded yet.</p>
-            </div>
           </div>
 
           <div className="privacy-card">

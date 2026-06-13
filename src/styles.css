@@ -688,6 +688,99 @@ noscript {
   background: #ffffff;
 }
 
+.print-button {
+  position: relative;
+  isolation: isolate;
+  gap: 0.5rem;
+  overflow: hidden;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+.print-button::before {
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  content: "";
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.print-button-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+.toolbar-print-button {
+  min-height: 2.45rem;
+  border-color: rgba(15, 23, 42, 0.18);
+  color: #0f172a;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.9)),
+    #ffffff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.88) inset,
+    0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.toolbar-print-button:hover {
+  border-color: rgba(15, 23, 42, 0.28);
+  background:
+    linear-gradient(180deg, #ffffff, rgba(241, 245, 249, 0.95)),
+    #ffffff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 14px 28px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
+.export-print-button {
+  min-height: 2.85rem;
+  border: 1px solid rgba(15, 23, 42, 0.96);
+  color: #ffffff;
+  background:
+    linear-gradient(180deg, #1f2937 0%, #111827 52%, #030712 100%),
+    #111827;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 14px 28px rgba(15, 23, 42, 0.22),
+    0 0 0 1px rgba(15, 23, 42, 0.05);
+}
+
+.export-print-button::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  transform: translateX(-85%);
+  opacity: 1;
+}
+
+.export-print-button:hover {
+  border-color: #030712;
+  background:
+    linear-gradient(180deg, #263244 0%, #111827 48%, #020617 100%),
+    #111827;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
+    0 18px 34px rgba(15, 23, 42, 0.28),
+    0 0 0 1px rgba(15, 23, 42, 0.06);
+  transform: translateY(-1px);
+}
+
+.export-print-button:hover::before {
+  opacity: 1;
+  transform: translateX(85%);
+  transition: transform 650ms ease, opacity 160ms ease;
+}
+
+.print-button:active,
+.primary-button:active,
+.secondary-button:active,
+.ghost-button:active {
+  transform: translateY(0);
+}
+
 .control-actions {
   display: grid;
   grid-template-columns: 1fr;
