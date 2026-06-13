@@ -1,6 +1,6 @@
-export const sampleMarkdown = `# AVERY CHEN
+export const sampleMarkdown = `# LILY ANNE
 
-San Francisco, CA | avery.chen@email.com | linkedin.com/in/averychen | github.com/averychen
+San Francisco, CA | lily.anne@email.com | linkedin.com/in/lilyanne | github.com/lilyanne
 
 ## Summary
 
